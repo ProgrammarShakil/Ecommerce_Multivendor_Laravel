@@ -23,10 +23,10 @@ class authController extends Controller
 
         $credentials = request()->except('_token');
 
-        if(auth()->attempt($credentials)){
+        if (auth()->attempt($credentials)) {
             return redirect()->route('home');
         }
-        
+
         session()->flash('message', 'auth failed');
         redirect('/');
     }
@@ -66,5 +66,30 @@ class authController extends Controller
             session()->flash('message' . $e->getMessage());
             return redirect()->back()->withErrors($validator)->withInput();
         }
+    }
+
+
+    public function ImageUPload()
+    {
+        return view('imageUpload');
+    }
+
+    public function ImageUPloadProcess()
+    {
+        $validator = request()->validate([
+            'photo' => 'required|image'
+        ]);
+
+        $file = request()->file('photo');
+        if (request()->hasFile('photo')) {
+            $fileName = uniqid('photo_') . "." .  $file->getClientOriginalExtension();
+            $file->storeAs('images', $fileName);
+
+            session()->flash('success', 'uploaded');
+            return redirect()->back();
+        }
+
+        session()->flash('errorMsg',  'failed');
+        return redirect()->back();
     }
 }
