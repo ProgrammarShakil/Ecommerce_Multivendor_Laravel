@@ -43,17 +43,25 @@ class authController extends Controller
             'email' => 'required|email|unique:users,email',
             'phone' => 'required|numeric|min:10||unique:users,phone',
             'password' => 'required|min:2|max:15|confirmed',
+            'photo' => 'required|image'
         ]);
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
+        $file = request()->file('photo');
+        if ($file->isValid()) {
+            $fileName = uniqid('photo_') . "." .  $file->getClientOriginalExtension();
+            $file->storeAs('images', $fileName);
+        }
+
         $data = [
-            'name' => $request->input('name'),
+            'name' => strtolower(trim($request->input('name'))),
             'email' => $request->input('email'),
             'phone' => $request->input('phone'),
-            'password' => bcrypt($request->input('password'))
+            'password' => bcrypt($request->input('password')),
+            'photo' => $file,
         ];
 
         try {
@@ -68,28 +76,4 @@ class authController extends Controller
         }
     }
 
-
-    public function ImageUPload()
-    {
-        return view('imageUpload');
-    }
-
-    public function ImageUPloadProcess()
-    {
-        $validator = request()->validate([
-            'photo' => 'required|image'
-        ]);
-
-        $file = request()->file('photo');
-        if (request()->hasFile('photo')) {
-            $fileName = uniqid('photo_') . "." .  $file->getClientOriginalExtension();
-            $file->storeAs('images', $fileName);
-
-            session()->flash('success', 'uploaded');
-            return redirect()->back();
-        }
-
-        session()->flash('errorMsg',  'failed');
-        return redirect()->back();
-    }
 }
