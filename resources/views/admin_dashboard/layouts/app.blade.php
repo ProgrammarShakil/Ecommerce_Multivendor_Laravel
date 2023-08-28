@@ -28,7 +28,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        @include('dashboard.partials.sidebar')
+        @include('admin_dashboard.partials.sidebar')
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -38,11 +38,11 @@
             <div id="content">
 
                 <!-- Topbar -->
-                @include('dashboard.partials.navbar')
+                @include('admin_dashboard.partials.navbar')
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                @yield('dashboard_content')
+                @yield('admin_dashboard_content')
                 <!-- /Close Page Content -->
 
             </div>
@@ -76,14 +76,14 @@
                     <a href="{{ route('logout') }}">
 
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        <form id="admin_logout_form" action="{{ route('admin_logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>
 
 
-                        <a class="btn btn-primary" href="{{ route('logout') }}"
+                        <a class="btn btn-primary" href="{{ route('admin_logout') }}"
                             onclick="event.preventDefault();
-                                      document.getElementById('logout-form').submit();">
+                                      document.getElementById('admin_logout_form').submit();">
                             Logout
                         </a>
                 </div>

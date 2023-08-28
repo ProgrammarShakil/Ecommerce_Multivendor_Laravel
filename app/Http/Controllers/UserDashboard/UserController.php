@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\UserDashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class UserController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -24,6 +24,6 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard.pages.index');
+        return view('user_dashboard.pages.index');
     }
 }

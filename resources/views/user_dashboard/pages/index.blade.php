@@ -1,6 +1,6 @@
-@extends('dashboard.layouts.app')
+@extends('user_dashboard.layouts.app')
 
-@section('dashboard_content')
+@section('user_dashboard_content')
 <div class="container-fluid">
 
     <!-- Page Heading -->
