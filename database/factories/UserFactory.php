@@ -26,10 +26,10 @@ class UserFactory extends Factory
         // ];
 
         return [
-            'name' => "Shakil Islam - User",
-            'email' => "shakljoka103@gmail.com",
+            'name' => fake()->name(),
+            'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => 'password', // password
+            'password' => bcrypt('password'),
             // 'remember_token' => Str::random(10),
         ];
     }
