@@ -27,8 +27,8 @@ class AdminFactory extends Factory
 
         return [
 
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
+            'name' => 'Md Shakil Islam - Admin',
+            'email' => 'freelancersuvo2022@gmail.com',
             'email_verified_at' => now(),
             'status' => 0,
             'password' => bcrypt('password'),
