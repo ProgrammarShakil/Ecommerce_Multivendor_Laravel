@@ -12,7 +12,8 @@
     <title>{{ config('app.name', 'Laravel') }} - Dashboard</title>
 
     <!-- Custom fonts for this template-->
-    <link href="{{ asset('dashboard/assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('dashboard/assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet"
+        type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -20,10 +21,39 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('dashboard/assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
 
+
+    <link href="{{ asset('dashboard/assets/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+
+    <style>
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #888;
+            border-radius: 5px !important;
+        }
+
+        * {
+            scrollbar-color: #888 transparent;
+            scrollbar-width: thin;
+        }
+
+        table.table-bordered.dataTable tbody th,
+        table.table-bordered.dataTable tbody td {
+            border-bottom-width: 1px;
+        }
+
+        div.dataTables_wrapper div.dataTables_length select {
+            width: 150px;
+            display: inline-block;
+        }
+    </style>
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 
 <body id="page-top">
-
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -108,6 +138,14 @@
     <script src="{{ asset('dashboard/assets/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('dashboard/assets/js/demo/chart-pie-demo.js') }}"></script>
 
-</body>
+    <!-- Page level plugins -->
+    <script src="{{ asset('dashboard/assets/vendor/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('dashboard/assets/vendor/datatables/dataTables.bootstrap4.min.js') }}"></script>
 
-</html>
+    <!-- Page level custom scripts -->
+    <script src="{{ asset('dashboard/assets/js/demo/datatables-demo.js') }}"></script>
+    <script>
+        < /body>
+
+        <
+        /html>

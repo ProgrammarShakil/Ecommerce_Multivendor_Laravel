@@ -6,11 +6,21 @@ import 'bootstrap';
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
+
+// Axios
 import axios from 'axios';
 window.axios = axios;
-
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
+
+// Sweet Alert
+import Swal2 from 'sweetalert2';
+window.Swal = Swal2;
+
+
+// ToastR
+import toastr from 'toastr';
+window.toastr = toastr;
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminDashboard\AdminController;
+use App\Http\Controllers\AdminDashboard\CategoryController;
 use App\Http\Controllers\adminLoginController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\UserDashboard\UserController;
@@ -19,6 +20,16 @@ Route::post('admin/logout', [adminLoginController::class, 'adminLogOut'])->name(
 
 Route::prefix('admin_dashboard')->namespace('AdminDashboard')->name('admin_dashboard.')->middleware('admin')->group(function () {
     Route::get('index', [AdminController::class, 'index'])->name('index');
+
+
+    // Category Route
+    Route::get('categories', [CategoryController::class, 'index'])->name('category.index');
+    Route::get('categories/create', [CategoryController::class, 'create'])->name('category.create');
+    Route::post('categories/store', [CategoryController::class, 'store'])->name('category.store');
+    Route::get('categories/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
+    Route::put('categories/update/{id}', [CategoryController::class, 'update'])->name('category.update');
+    Route::delete('categories/delete/{id}', [CategoryController::class, 'delete'])->name('category.delete');
+
 });
 
 #---------------------- End Admin Routes -----------------------#
