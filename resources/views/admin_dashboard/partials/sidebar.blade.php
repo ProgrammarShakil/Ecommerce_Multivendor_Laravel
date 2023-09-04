@@ -26,21 +26,54 @@
         Interface
     </div>
 
-    <!-- Nav Item - Pages Collapse Menu -->
+    <!-- Categories -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-            aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Categories"
+            aria-expanded="true" aria-controls="Categories">
+            <i class="fas fa-snowflake"></i>
             <span>Categories</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="Categories" class="collapse" aria-labelledby="Categories" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 {{-- <h6 class="collapse-header">Custom Components:</h6> --}}
                 <a class="collapse-item" href="{{route('admin_dashboard.category.index')}}">All Categories</a>
-                <a class="collapse-item" href="{{route('admin_dashboard.category.create')}}">Add Categories</a>
+                <a class="collapse-item" href="{{route('admin_dashboard.category.create')}}">Add Category</a>
             </div>
         </div>
     </li>
+
+      <!-- Products -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Products"
+            aria-expanded="true" aria-controls="Products">
+            <i class="fas fa-briefcase"></i>
+            <span>Products</span>
+        </a>
+        <div id="Products" class="collapse" aria-labelledby="Products" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                {{-- <h6 class="collapse-header">Custom Components:</h6> --}}
+                <a class="collapse-item" href="{{route('admin_dashboard.product.index')}}">All Products</a>
+                <a class="collapse-item" href="{{route('admin_dashboard.product.create')}}">Add Product</a>
+            </div>
+        </div>
+    </li>
+
+
+          <!-- Settings -->
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#Settings"
+                aria-expanded="true" aria-controls="Settings">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>Settings</span>
+            </a>
+            <div id="Settings" class="collapse" aria-labelledby="Settings" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+
+                    <a class="collapse-item" href="">Settings</a>
+                    <a class="collapse-item" href="">Admin Settings</a>
+                </div>
+            </div>
+        </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider">

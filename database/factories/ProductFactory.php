@@ -18,11 +18,11 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => random_int(1,5),
+            'admin_id' => 1,
             'category_id' => random_int(1,5),
             'title' => fake()->name(),
             'description' => fake()->name(),
-            'product_image_path' => fake()->imageUrl(),
+            'product_image_path' => 'default.png',
             'status' => 1,
         ];
     }

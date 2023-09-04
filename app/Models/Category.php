@@ -12,7 +12,6 @@ class Category extends Model
     protected $fillable = [
         'name',
         'slug',
-        'product_image_path',
         'status',
     ];
 }

@@ -16,9 +16,9 @@
             <div class="card-header py-3">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
-                        <h6 class="m-0 font-weight-bold text-primary">All Categories</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">All Products</h6>
                     </div>
-                    <div><a href="{{ route('admin_dashboard.category.create') }}"><button
+                    <div><a href="{{ route('admin_dashboard.product.create') }}"><button
                                 class="btn btn-primary btn-sm">Create</button></a></div>
                 </div>
             </div>
@@ -28,40 +28,56 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Name</th>
-                                <th>Slug</th>
+                                <th>Admin ID</th>
+                                <th>Category ID</th>
+                                <th>Title</th>
+                                <th>Description</th>
                                 <th>Status</th>
+                                <th>Image</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($categories as $category)
+                            @foreach ($products as $product)
                                 <tr>
-                                    <td>{{ $category->id }}</td>
-                                    <td>{{ $category->name }}</td>
-                                    <td>{{ $category->slug }}</td>
+                                    <td>{{ $product->id }}</td>
+                                    <td>{{ $product->admin_id }}</td>
+                                    <td>{{ $product->category_id }}</td>
+                                    <td>{{ $product->title }}</td>
+                                    <td>{{ $product->description }}</td>
                                     <td>
-                                        @if ($category->status == 1)
+                                        @if ($product->status == 1)
                                             <span class="text-success">Active</span>
                                         @else
                                             <span class="text-danger">Draft</span>
                                         @endif
                                     </td>
                                     <td>
+                                        @if ($product->product_image_path == "default.png")
+                                            <img src="{{ asset('uploads/products/images/default.png') }}"
+                                                width="50px">
+                                        @else
+                                            <img src="{{ asset('uploads/products/images/' . $product->product_image_path) }}"
+                                                width="50px">
+                                        @endif
+
+
+                                    <td>
                                         <div class="d-flex justify-content-start">
                                             <div>
-                                                <a href="{{ route('admin_dashboard.category.edit', $category->id) }}">
+                                                <a href="{{ route('admin_dashboard.product.edit', $product->id) }}">
                                                     <button class="btn btn-primary btn-sm">
                                                         <i class="fa fa-edit"></i>
                                                     </button>
                                                 </a>
                                             </div>
                                             <div class="ml-2">
-                                                <form
-                                                    action="{{ route('admin_dashboard.category.delete', $category->id) }}" method="POST">
+                                                <form action="{{ route('admin_dashboard.product.delete', $product->id) }}"
+                                                    method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button onclick="return confirm('Are you Sure?')" type="submit" class="btn btn-danger btn-sm">
+                                                    <button onclick="return confirm('Are you Sure?')" type="submit"
+                                                        class="btn btn-danger btn-sm">
                                                         <i class="fa fa-trash"></i>
                                                     </button>
                                                 </form>

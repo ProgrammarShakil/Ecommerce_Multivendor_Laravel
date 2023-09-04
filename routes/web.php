@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminDashboard\AdminController;
 use App\Http\Controllers\AdminDashboard\CategoryController;
+use App\Http\Controllers\AdminDashboard\ProductController;
 use App\Http\Controllers\adminLoginController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\UserDashboard\UserController;
@@ -22,14 +23,21 @@ Route::prefix('admin_dashboard')->namespace('AdminDashboard')->name('admin_dashb
     Route::get('index', [AdminController::class, 'index'])->name('index');
 
 
-    // Category Route
-    Route::get('categories', [CategoryController::class, 'index'])->name('category.index');
+    // Category Routes
+    Route::get('categories/index', [CategoryController::class, 'index'])->name('category.index');
     Route::get('categories/create', [CategoryController::class, 'create'])->name('category.create');
     Route::post('categories/store', [CategoryController::class, 'store'])->name('category.store');
     Route::get('categories/edit/{id}', [CategoryController::class, 'edit'])->name('category.edit');
     Route::put('categories/update/{id}', [CategoryController::class, 'update'])->name('category.update');
     Route::delete('categories/delete/{id}', [CategoryController::class, 'delete'])->name('category.delete');
 
+    // Product Routes
+    Route::get('Products/index', [ProductController::class, 'index'])->name('product.index');
+    Route::get('Products/create', [ProductController::class, 'create'])->name('product.create');
+    Route::post('Products/store', [ProductController::class, 'store'])->name('product.store');
+    Route::get('Products/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
+    Route::put('Products/update/{id}', [ProductController::class, 'update'])->name('product.update');
+    Route::delete('Products/delete/{id}', [ProductController::class, 'delete'])->name('product.delete');
 });
 
 #---------------------- End Admin Routes -----------------------#

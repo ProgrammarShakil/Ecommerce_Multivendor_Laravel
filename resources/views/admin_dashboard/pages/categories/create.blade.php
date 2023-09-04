@@ -8,7 +8,7 @@
             <div class="card-header py-3">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
-                        <h6 class="m-0 font-weight-bold text-primary">Categories</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Create Category</h6>
                     </div>
                     <div><a href="{{ route('admin_dashboard.category.index') }}"><button
                                 class="btn btn-primary btn-sm">Back</button></a></div>
