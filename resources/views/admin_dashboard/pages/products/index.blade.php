@@ -28,8 +28,8 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Admin ID</th>
-                                <th>Category ID</th>
+                                <th>Author</th>
+                                <th>Category</th>
                                 <th>Title</th>
                                 <th>Description</th>
                                 <th>Status</th>
@@ -42,7 +42,7 @@
                                 <tr>
                                     <td>{{ $product->id }}</td>
                                     <td>{{ $product->admin_id }}</td>
-                                    <td>{{ $product->category_id }}</td>
+                                    <td>{{ $product->category->name }}</td>
                                     <td>{{ $product->title }}</td>
                                     <td>{{ $product->description }}</td>
                                     <td>

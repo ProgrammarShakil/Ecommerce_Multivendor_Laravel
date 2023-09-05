@@ -17,9 +17,10 @@ Auth::routes();
 
 Route::get('admin/login', [adminLoginController::class, 'adminLoginForm'])->name('admin_login_form');
 Route::post('admin/login', [adminLoginController::class, 'adminLogin'])->name('admin_login');
+
 Route::post('admin/logout', [adminLoginController::class, 'adminLogOut'])->name('admin_logout');
 
-Route::prefix('admin_dashboard')->namespace('AdminDashboard')->name('admin_dashboard.')->middleware('admin')->group(function () {
+Route::prefix('admin_dashboard')->namespace('AdminDashboard')->name('admin_dashboard.')->middleware(['admin'])->group(function () {
     Route::get('index', [AdminController::class, 'index'])->name('index');
 
 
