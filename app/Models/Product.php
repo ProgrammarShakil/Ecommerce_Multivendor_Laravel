@@ -21,4 +21,8 @@ class Product extends Model
     public function category(){
         return $this->belongsTo(Category::class, 'category_id');
     }
+
+    public function admin(){
+        return $this->belongsTo(Admin::class, 'admin_id');
+    }
 }

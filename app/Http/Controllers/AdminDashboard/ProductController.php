@@ -15,9 +15,9 @@ class ProductController extends Controller
     public function index()
     {
 
-        $products = Product::get();
+        $products = Product::with('category','admin')->get();
 
-        return view('admin_dashboard.pages.products.index')->with('products', $products);
+        return view('admin_dashboard.pages.products.index', compact('products'));
     }
 
     public function create()
