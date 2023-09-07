@@ -22,7 +22,7 @@ class ProductFactory extends Factory
             'category_id' => random_int(1,5),
             'title' => fake()->name(),
             'description' => fake()->name(),
-            'product_image_path' => 'default.png',
+            'product_image_path' => 'default.jpg',
             'status' => 1,
         ];
     }

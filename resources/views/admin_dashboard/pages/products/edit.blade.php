@@ -60,7 +60,10 @@
                         <div class="col-md-6 mb-3">
                             <label for="category_id">Category</label>
                             <select name="category_id" class="custom-select">
-                                <option value="{{ $product->category_id }}">{{ $product->category_id }}</option>
+                                @foreach ($categories as $category)
+                                    <option @if ($product->category->id == $category->id) selected
+                                    @endif value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="col-md-6 mb-3">
@@ -70,7 +73,8 @@
                             <input class="form-control" value="{{ $product->product_image_path }}" type="hidden"
                                 name="product_image_path_update">
 
-                            <img class="pt-2" src="{{ asset('uploads/products/images/' . $product->product_image_path) }}"
+                            <img class="pt-2"
+                                src="{{ asset('uploads/products/images/' . $product->product_image_path) }}"
                                 width="200px">
                         </div>
                         <div class="col-md-12 mb-3">

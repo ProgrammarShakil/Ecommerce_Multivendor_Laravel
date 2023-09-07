@@ -10,8 +10,6 @@ class FrontendController extends Controller
 {
     public function index()
     {
-        $data = [];
-        $data['categories'] = Category::get();
         return view('frontend.pages.index');
     }
     public function shop()
@@ -37,7 +35,7 @@ class FrontendController extends Controller
     public function categories($id)
     {
 
-        $category = Category::find($id);
-        return view('frontend.pages.categories',compact('category'));
+        $category = Category::with('products')->find($id);
+        return view('frontend.pages.categories', compact('category'));
     }
 }

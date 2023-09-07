@@ -83,7 +83,7 @@ class ProductController extends Controller
 
         if ($product_image_path) {
 
-            if (!($product->product_image_path == 'default.png')) {
+            if (!($product->product_image_path == 'default.jpg')) {
                 unlink(public_path('uploads/products/images/' . $product->product_image_path));
             }
 
@@ -114,7 +114,7 @@ class ProductController extends Controller
         $product = Product::find($id);
 
         try {
-            if (!($product->product_image_path == 'default.png')) {
+            if (!($product->product_image_path == 'default.jpg')) {
                 unlink(public_path('uploads/products/images/' . $product->product_image_path));
             }
 

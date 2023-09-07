@@ -41,7 +41,8 @@
                     @method('POST')
                     <div class="form-row">
 
-                        <input type="hidden" name="admin_id" class="form-control" value="{{ auth()->guard('admin')->user()->id }}">
+                        <input type="hidden" name="admin_id" class="form-control"
+                            value="{{ auth()->guard('admin')->user()->id }}">
 
                         <div class="col-md-6 mb-3">
                             <label for="product_title">Product Title</label>
@@ -58,16 +59,19 @@
                         <div class="col-md-6 mb-3">
                             <label for="category_id">Category</label>
                             <select name="category_id" class="custom-select">
-                                <option value="4">4</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="product_image_path">Product Image</label> <br>
-                            <input class="form-control" value="{{old('product_image_path')}}" type="file" name="product_image_path">
+                            <input class="form-control" value="{{ old('product_image_path') }}" type="file"
+                                name="product_image_path">
                         </div>
                         <div class="col-md-12 mb-3">
                             <label for="product_description">Product Description</label>
-                            <textarea class="form-control" name="product_description" cols="10" rows="4">{{old('product_description')}}</textarea>
+                            <textarea class="form-control" name="product_description" cols="10" rows="4">{{ old('product_description') }}</textarea>
                         </div>
                     </div>
                     <button class="btn btn-primary" type="submit">Add</button>

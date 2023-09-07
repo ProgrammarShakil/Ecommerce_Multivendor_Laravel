@@ -53,8 +53,8 @@
                                         @endif
                                     </td>
                                     <td>
-                                        @if ($product->product_image_path == "default.png")
-                                            <img src="{{ asset('uploads/products/images/default.png') }}"
+                                        @if ($product->product_image_path == "default.jpg")
+                                            <img src="{{ asset('uploads/products/images/default.jpg') }}"
                                                 width="50px">
                                         @else
                                             <img src="{{ asset('uploads/products/images/' . $product->product_image_path) }}"
