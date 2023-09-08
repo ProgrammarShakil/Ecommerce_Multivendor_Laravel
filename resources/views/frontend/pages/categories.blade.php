@@ -3,7 +3,7 @@
 @section('frontend_content')
     <div class="container-fluid pt-5">
         <div class="text-center mb-4">
-            <h2 class="section-title px-5"><span class="px-2">Just Arrived</span></h2>
+            <h2 class="section-title px-5"><span class="px-2">Category Wise Products</span></h2>
 
             <div class="row px-xl-5 pb-3">
                 @if ($category->products->count() == 0)
@@ -14,13 +14,14 @@
                             <div class="card product-item border-0 mb-4">
                                 <div
                                     class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                                    @if ($product->product_image_path == "default.jpg")
-                                    <img class="img-fluid w-100" src="{{ asset('uploads/products/images/default.jpg') }}"
-                                        width="50px">
-                                @else
-                                    <img class="img-fluid w-100" src="{{ asset('uploads/products/images/' . $product->product_image_path) }}"
-                                        width="50px">
-                                @endif
+                                    @if ($product->product_image_path == 'default.jpg')
+                                        <img class="img-fluid w-100" src="{{ asset('uploads/products/images/default.jpg') }}"
+                                            width="50px">
+                                    @else
+                                        <img class="img-fluid w-100"
+                                            src="{{ asset('uploads/products/images/' . $product->product_image_path) }}"
+                                            width="50px">
+                                    @endif
                                 </div>
                                 <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                                     <h6 class="text-truncate mb-3"> {{ $product->title }}</h6>
