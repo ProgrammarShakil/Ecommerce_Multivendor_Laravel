@@ -20,7 +20,7 @@ Route::post('admin/login', [adminLoginController::class, 'adminLogin'])->name('a
 
 Route::post('admin/logout', [adminLoginController::class, 'adminLogOut'])->name('admin_logout');
 
-Route::prefix('admin_dashboard')->namespace('AdminDashboard')->name('admin_dashboard.')->middleware(['auth:admin'])->group(function () {
+Route::prefix('admin_dashboard')->namespace('AdminDashboard')->name('admin_dashboard.')->middleware(['admin'])->group(function () {
     Route::get('index', [AdminController::class, 'index'])->name('index');
 
 
@@ -58,7 +58,7 @@ Route::get('/categories/{id}', [FrontendController::class, 'categories'])->name(
 
 #----------------------- Start User Routes -----------------------#
 
-Route::prefix('user_dashboard')->namespace('UserDashboard')->name('user_dashboard.')->middleware(['auth:web'])->group(function () {
+Route::prefix('user_dashboard')->namespace('UserDashboard')->name('user_dashboard.')->middleware(['auth'])->group(function () {
     Route::get('/index', [UserController::class, 'index'])->name('index');
 });
 
