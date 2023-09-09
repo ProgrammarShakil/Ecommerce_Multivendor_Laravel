@@ -53,6 +53,9 @@ Route::get('/cart', [FrontendController::class, 'cart'])->name('frontend.cart');
 Route::get('/checkout', [FrontendController::class, 'checkout'])->name('frontend.checkout');
 Route::get('/contact', [FrontendController::class, 'contact'])->name('frontend.contact');
 Route::get('/categories/{id}', [FrontendController::class, 'categories'])->name('frontend.categories');
+
+Route::get('verify/{token}',[FrontendController::class, 'userVerification'])->name('verify');
+
 #----------------------- End Frontend Routes   -----------------------#
 
 

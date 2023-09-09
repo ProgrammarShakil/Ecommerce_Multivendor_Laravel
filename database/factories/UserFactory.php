@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
@@ -30,7 +31,10 @@ class UserFactory extends Factory
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => bcrypt('password'),
-            // 'remember_token' => Str::random(10),
+            'remember_token' => Str::random(10),
+            'email_verified' => 1,
+            'email_verified_at' => Carbon::now(),
+            'email_verification_token' => '',
         ];
     }
 
