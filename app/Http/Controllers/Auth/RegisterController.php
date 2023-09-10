@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Mail\UserVerificationEmail;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Notifications\NotifyUser;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -75,6 +76,9 @@ class RegisterController extends Controller
         ]);
 
         Mail::to($user->email)->queue(new UserVerificationEmail($user));
+
+        // by default finding email column, at this user, then send him notification with email
+        $user->notify(new NotifyUser($user));
 
         session()->flash('message', 'Registration Success, Check Email To Verify Your Account');
 
