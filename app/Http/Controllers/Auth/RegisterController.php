@@ -74,7 +74,7 @@ class RegisterController extends Controller
             'email_verification_token' => Str::random(32),
         ]);
 
-        Mail::to($user->email)->send(new UserVerificationEmail($user));
+        Mail::to($user->email)->queue(new UserVerificationEmail($user));
 
         session()->flash('message', 'Registration Success, Check Email To Verify Your Account');
 
