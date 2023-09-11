@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Mail\UserVerificationEmail;
+use App\Models\Admin;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use App\Notifications\NotifyUser;
+use App\Notifications\NotifyWithDB;
 use App\Notifications\NotifyWithSMS;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
@@ -80,7 +82,11 @@ class RegisterController extends Controller
 
         // $user->notify(new NotifyUser($user));
 
-        $user->notify(new NotifyWithSMS());
+        // $user->notify(new NotifyWithSMS());
+
+        $admin = Admin::find(1);
+
+        $admin->notify(new NotifyWithDB($user));
 
         session()->flash('message', 'Registration Success, Check Email To Verify Your Account');
 
