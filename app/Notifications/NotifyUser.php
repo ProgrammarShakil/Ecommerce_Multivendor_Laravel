@@ -7,8 +7,9 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Illuminate\Notifications\Messages\VonageMessage;
 
-class NotifyUser extends Notification
+class NotifyUser extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -39,7 +40,7 @@ class NotifyUser extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage)
-            ->line('Hi,'. $this->user->name. ' Happy Birthday!')
+            ->line('Hi,' . $this->user->name . ' Happy Birthday!')
             ->action('please login your account to get surprised', route('login'))
             ->line('Thank you for using our application!');
     }
