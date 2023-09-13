@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Notifications\NotifyUser;
 use App\Notifications\NotifyWithDB;
 use App\Notifications\NotifyWithSMS;
+use Carbon\Carbon;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -76,6 +77,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'email_verification_token' => Str::random(32),
+            'last_login' => Carbon::now(),
         ]);
 
         // Mail::to($user->email)->queue(new UserVerificationEmail($user));
