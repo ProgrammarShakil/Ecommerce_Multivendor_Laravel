@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 
 @section('frontend_content')
-    {{-- <div id="header-carousel" class="carousel slide" data-ride="carousel">
+    <div id="header-carousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active" style="height: 410px;">
                 <img class="img-fluid" src="{{ asset('frontend/assets/img/carousel-1.jpg') }}" alt="Image">
@@ -36,9 +36,9 @@
                 <span class="carousel-control-next-icon mb-n2"></span>
             </div>
         </a>
-    </div> --}}
+    </div>
     <!-- Featured Start -->
-    {{-- <div class="container-fluid pt-5">
+    <div class="container-fluid pt-5">
         <div class="row px-xl-5 pb-3">
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                 <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
@@ -65,11 +65,11 @@
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
     <!-- Featured End -->
 
     <!-- Offer Start -->
-    {{-- <div class="container-fluid offer pt-5">
+    <div class="container-fluid offer pt-5">
         <div class="row px-xl-5">
             <div class="col-md-6 pb-4">
                 <div class="position-relative bg-secondary text-center text-md-right text-white mb-2 py-5 px-5">
@@ -92,12 +92,12 @@
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
     <!-- Offer End -->
 
 
     <!-- Subscribe Start -->
-    {{-- <div class="container-fluid bg-secondary my-5">
+    <div class="container-fluid bg-secondary my-5">
         <div class="row justify-content-md-center py-5 px-xl-5">
             <div class="col-md-6 col-12 py-5">
                 <div class="text-center mb-2 pb-2">
@@ -115,7 +115,7 @@
                 </form>
             </div>
         </div>
-    </div> --}}
+    </div>
     <!-- Subscribe End -->
 
 
@@ -125,7 +125,7 @@
 
 
     <!-- Vendor Start -->
-    {{-- <div class="container-fluid py-5">
+    <div class="container-fluid py-5">
         <div class="row px-xl-5">
             <div class="col">
                 <div class="owl-carousel vendor-carousel">
@@ -156,6 +156,15 @@
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
     <!-- Vendor End -->
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            window.Echo.channel('product.created')
+                .listen('ProductCreated', (e) => {
+                    toastr.success(e.product.title + ' Added Now');
+                });
+        });
+    </script>
 @endsection
