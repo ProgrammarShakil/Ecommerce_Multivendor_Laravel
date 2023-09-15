@@ -47,6 +47,14 @@
                     </div>
 
                     <div>
+                        {{-- select all checkbox --}}
+                        <div class="form-check">
+                            <input type="checkbox" onchange="checkAll(this)" id="selectAll" class="form-check-input">
+                            <label for="selectAll">Select All</label>
+                        </div>
+                        {{-- select all checkbox --}}
+
+                        {{-- check boxes --}}
                         @foreach ($permissions as $permission)
                             <div class="form-check">
                                 <input value="{{ $permission->name }}" id="checkPermission-{{ $permission->id }}"
@@ -54,6 +62,7 @@
                                 <label for="checkPermission-{{ $permission->id }}"> {{ $permission->name }}</label>
                             </div>
                         @endforeach
+                        {{-- check boxes --}}
                     </div>
                     <button class="btn btn-primary" type="submit">Add</button>
                 </form>
@@ -61,4 +70,19 @@
             </div>
         </div>
     </div>
+    <script>
+        let check_boxes = document.querySelectorAll("input[type='checkbox']");
+
+        function checkAll(myCheckbox) {
+            if (myCheckbox.checked == true) {
+                check_boxes.forEach(checkbox => {
+                    checkbox.checked = true
+                });
+            } else {
+                check_boxes.forEach(checkbox => {
+                    checkbox.checked = false
+                });
+            }
+        }
+    </script>
 @endsection
