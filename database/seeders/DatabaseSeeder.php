@@ -28,5 +28,7 @@ class DatabaseSeeder extends Seeder
         User::factory(10)->create();
         Category::factory(5)->create();
         Product::factory(10)->create();
+
+        $this->call(RolePermissionSeeder::class);
     }
 }
