@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -49,4 +50,19 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
+    public static function getPermissionGroups()
+    {
+        $get_permission_group = DB::table('permissions')->select('group_name')->groupBy('group_name')->get();
+
+        return $get_permission_group;
+    }
+
+    public static function getPermissionNamesByGroupName($group_name)
+    {
+        $get_permission_names_by_group_name = DB::table('permissions')->select('name', 'id')->where('group_name', $group_name)->get();
+
+        return $get_permission_names_by_group_name;
+    }
 }
