@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\UserDashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
@@ -26,6 +28,7 @@ class RolePermissionController extends Controller
     {
         $data = [];
         $data['permissions'] = Permission::get();
+        $data['permission_group'] = User::getPermissionGroups();
         return view('user_dashboard.pages.role_permission.create', $data);
     }
 
