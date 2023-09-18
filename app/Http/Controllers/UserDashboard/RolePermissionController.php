@@ -77,7 +77,11 @@ class RolePermissionController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = [];
+        $data['role'] = Role::find($id);
+        $data['permissions'] = Permission::get();
+        $data['permission_group'] = User::getPermissionGroups();
+        return view('user_dashboard.pages.role_permission.edit', $data);
     }
 
     /**
@@ -85,7 +89,32 @@ class RolePermissionController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        request()->validate([
+            'role_name' => 'required|unique:roles,name,' .$id,
+            'permissions' => 'required'
+        ]);
+
+        // get role name
+        $data = [
+            'name' => request('role_name'),
+        ];
+
+        //get permission data
+        $permissions = request('permissions');
+
+        try {
+            //role update
+            $role = Role::findById($id);
+            $role->update($data);
+
+            //if permission not blank, assign role
+            if (!empty($permissions)) {
+                $role->syncPermissions($permissions);
+            }
+            return redirect()->route('user_dashboard.role_permission.index')->with('successMessage', 'Role Updated Successfully');
+        } catch (Exception $e) {
+            return redirect()->back()->withInput()->with('errorMessage', $e->getMessage());
+        }
     }
 
     /**
@@ -93,6 +122,15 @@ class RolePermissionController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $role = Role::findById($id);
+
+        try {
+            if (!is_null($role)) {
+                $role->delete();
+            }
+            return redirect()->back()->with('successMessage', 'Role Deleted Successfully');
+        } catch (Exception $e) {
+            return redirect()->back()->with('errorMessage', $e->getMessage());
+        }
     }
 }

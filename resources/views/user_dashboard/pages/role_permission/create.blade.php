@@ -7,7 +7,7 @@
             <div class="card-header py-3">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
-                        <h6 class="m-0 font-weight-bold text-primary">Create Category</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Create Role & Assign Permission</h6>
                     </div>
                     <div><a href="{{ route('user_dashboard.role_permission.index') }}"><button
                                 class="btn btn-primary btn-sm">Back</button></a></div>
@@ -101,37 +101,5 @@
             </div>
         </div>
     </div>
-    <script>
-        let check_boxes = document.querySelectorAll("input[type='checkbox']");
-
-        function checkAll(myCheckbox) {
-            if (myCheckbox.checked == true) {
-                check_boxes.forEach(checkbox => {
-                    checkbox.checked = true
-                });
-            } else {
-                check_boxes.forEach(checkbox => {
-                    checkbox.checked = false
-                });
-            }
-            if (check_boxes.length == 0) {
-                myCheckbox.checked == false
-            }
-        }
-
-        function checkPermissionGroup(className, checkThis) {
-            const groupIdName = document.getElementById(checkThis.id);
-            const classCheckboxes = document.querySelectorAll('.' + className + ' input');
-
-            if (groupIdName.checked) {
-                classCheckboxes.forEach(checkbox => {
-                    checkbox.checked = true;
-                });
-            } else {
-                classCheckboxes.forEach(checkbox => {
-                    checkbox.checked = false;
-                });
-            }
-        }
-    </script>
+@include('user_dashboard.partials.role_permission_scripts')
 @endsection
