@@ -44,15 +44,18 @@
         allCheckPermission()
     }
 
-    function allCheckPermission(){
-        const countPermissions = {{count($permissions)}};
-        const countPermissionGroups = {{count($permission_group)}};
+    function allCheckPermission() {
+        const countPermissions = {{ count($permissions) }};
+        const countPermissionGroups = {{ count($permission_group) }};
 
-        if(($("input[type='checkbox']:checked").length) >= countPermissions + countPermissionGroups){
+        if (($("input[type='checkbox']:checked").length) >= countPermissions + countPermissionGroups) {
             $('#selectAll').prop('checked', true);
-        }else{
+        } else {
             $('#selectAll').prop('checked', false);
         }
     }
 
+    document.addEventListener('DOMContentLoaded', function() {
+        allCheckPermission()
+    });
 </script>

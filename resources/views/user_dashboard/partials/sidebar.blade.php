@@ -35,27 +35,42 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="{{route('user_dashboard.blog.index')}}">All Blogs</a>
-                <a class="collapse-item" href="{{route('user_dashboard.blog.create')}}">Create Blog</a>
+                <a class="collapse-item" href="{{ route('user_dashboard.blog.index') }}">All Blogs</a>
+                <a class="collapse-item" href="{{ route('user_dashboard.blog.create') }}">Create Blog</a>
             </div>
         </div>
     </li>
 
 
-        <!-- Role and Permission -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
-                aria-expanded="true" aria-controls="collapseThree">
-                <i class="fas fa-fw fa-cog"></i>
-                <span>Role Permission</span>
-            </a>
-            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="{{route('user_dashboard.role_permission.index')}}">Role List</a>
-                    <a class="collapse-item" href="{{route('user_dashboard.role_permission.create')}}">Create Role</a>
-                </div>
+    <!-- Role and Permission -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree"
+            aria-expanded="true" aria-controls="collapseThree">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Role Permission</span>
+        </a>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ route('user_dashboard.role_permission.index') }}">Role List</a>
+                <a class="collapse-item" href="{{ route('user_dashboard.role_permission.create') }}">Create Role</a>
             </div>
-        </li>
+        </div>
+    </li>
+
+       <!-- Users -->
+       <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseFour"
+            aria-expanded="true" aria-controls="collapseFour">
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Users</span>
+        </a>
+        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="{{ route('user_dashboard.user.index') }}">Users List</a>
+                <a class="collapse-item" href="{{ route('user_dashboard.user.create') }}">Create User</a>
+            </div>
+        </div>
+    </li>
 
     <!-- Divider -->
     <hr class="sidebar-divider">
