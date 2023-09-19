@@ -38,6 +38,26 @@ class RolePermissionSeeder extends Seeder
                     'user_dashboard.blog.delete'
                 ]
             ],
+            [
+                'group_name' => 'profile',
+                'permissions' => [
+                    'user_dashboard.profile.create',
+                    'user_dashboard.profile.index',
+                    'user_dashboard.profile.edit',
+                    'user_dashboard.profile.update',
+                    'user_dashboard.profile.delete'
+                ]
+            ],
+            [
+                'group_name' => 'settings',
+                'permissions' => [
+                    'user_dashboard.settings.create',
+                    'user_dashboard.settings.index',
+                    'user_dashboard.settings.edit',
+                    'user_dashboard.settings.update',
+                    'user_dashboard.settings.delete'
+                ]
+            ],
 
         ];
 

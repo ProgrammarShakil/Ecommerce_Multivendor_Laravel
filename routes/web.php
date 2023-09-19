@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\AdminDashboard\AdminController;
+use App\Http\Controllers\AdminDashboard\AdminDashboardController;
 use App\Http\Controllers\AdminDashboard\CategoryController;
 use App\Http\Controllers\AdminDashboard\ProductController;
 use App\Http\Controllers\adminLoginController;
@@ -8,6 +8,7 @@ use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\UserDashboard\BlogController;
 use App\Http\Controllers\UserDashboard\RolePermissionController;
 use App\Http\Controllers\UserDashboard\UserController;
+use App\Http\Controllers\UserDashboard\UserDashboardController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -23,7 +24,7 @@ Route::post('admin/login', [adminLoginController::class, 'adminLogin'])->name('a
 Route::post('admin/logout', [adminLoginController::class, 'adminLogOut'])->name('admin_logout');
 
 Route::prefix('admin_dashboard')->name('admin_dashboard.')->middleware(['admin'])->group(function () {
-    Route::get('index', [AdminController::class, 'index'])->name('index');
+    Route::get('index', [AdminDashboardController::class, 'index'])->name('index');
 
 
     // Category Routes
@@ -64,18 +65,26 @@ Route::get('verify/{token}', [FrontendController::class, 'userVerification'])->n
 #----------------------- Start User Routes -----------------------#
 
 Route::prefix('user_dashboard')->name('user_dashboard.')->middleware(['auth'])->group(function () {
-    Route::get('/index', [UserController::class, 'index'])->name('index');
+    Route::get('/index', [UserDashboardController::class, 'index'])->name('index');
 
     // Blog Routes
     Route::get('/blog/index', [BlogController::class, 'index'])->name('blog.index');
     Route::get('/blog/create', [BlogController::class, 'create'])->name('blog.create');
     Route::post('/blog/store', [BlogController::class, 'store'])->name('blog.store');
-    Route::post('/blog/edit/{id}', [BlogController::class, 'edit'])->name('blog.edit');
-    Route::put('/blog/edit', [BlogController::class, 'update'])->name('blog.update');
+    Route::get('/blog/edit/{id}', [BlogController::class, 'edit'])->name('blog.edit');
+    Route::put('/blog/update/{id}', [BlogController::class, 'update'])->name('blog.update');
     Route::delete('/blog/delete/{id}', [BlogController::class, 'delete'])->name('blog.delete');
 
     // Role Permission Routes
     Route::resource('/role_permission', RolePermissionController::class)->names('role_permission');
+
+    // User Routes
+    Route::get('/user/index', [UserController::class, 'index'])->name('user.index');
+    Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
+    Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
+    Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
+    Route::put('/user/update/{id}', [UserController::class, 'update'])->name('user.update');
+    Route::delete('/user/delete/{id}', [UserController::class, 'delete'])->name('user.delete');
 });
 
 #----------------------- End User Routes   -----------------------#

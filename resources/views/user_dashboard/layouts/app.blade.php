@@ -19,6 +19,7 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ asset('dashboard/assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 
@@ -107,6 +108,15 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('dashboard/assets/js/demo/chart-area-demo.js') }}"></script>
     <script src="{{ asset('dashboard/assets/js/demo/chart-pie-demo.js') }}"></script>
+
+    {{-- select2 custom code and cdn --}}
+    <script>
+        $(document).ready(function() {
+            $('.select2').select2();
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    {{-- select2 custom code and cdn  --}}
 
 </body>
 
