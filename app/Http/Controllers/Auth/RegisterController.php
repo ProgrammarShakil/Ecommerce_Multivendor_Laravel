@@ -7,6 +7,7 @@ use App\Mail\UserVerificationEmail;
 use App\Models\Admin;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Notifications\NotifyInactiveUsers;
 use App\Notifications\NotifyUser;
 use App\Notifications\NotifyWithDB;
 use App\Notifications\NotifyWithSMS;
@@ -85,6 +86,21 @@ class RegisterController extends Controller
         // $user->notify(new NotifyUser($user));
 
         // $user->notify(new NotifyWithSMS());
+
+        $basic  = new \Vonage\Client\Credentials\Basic("68262852", "if9i1d1Py8P7BAnK");
+        $client = new \Vonage\Client($basic);
+
+        $response = $client->sms()->send(
+            new \Vonage\SMS\Message\SMS("8801770345518", 'Netigian IT', 'Successfully Registered.')
+        );
+
+        $message = $response->current();
+
+        if ($message->getStatus() == 0) {
+            echo "The message was sent successfully\n";
+        } else {
+            echo "The message failed with status: " . $message->getStatus() . "\n";
+        }
 
         $admin = Admin::find(1);
 

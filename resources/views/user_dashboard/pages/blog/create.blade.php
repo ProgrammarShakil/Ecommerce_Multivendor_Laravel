@@ -1,34 +1,62 @@
 @extends('user_dashboard.layouts.app')
 
 @section('user_dashboard_content')
-    <div class="container-fluid">
-
-        <!-- Page Heading -->
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                    class="fas fa-download fa-sm text-white-50"></i> Button</a>
-        </div>
-
-        <!-- Content Row -->
-        <div class="row">
-            <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-primary shadow h-100 py-2">
-                    <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                    Blog Create</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">Test</div>
-                            </div>
-                            <div class="col-auto">
-                                <i class="fas fa-calendar fa-2x text-gray-300"></i>
-                            </div>
-                        </div>
+    <div class="container">
+        <!-- DataTales -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h6 class="m-0 font-weight-bold text-primary">Create New Blog</h6>
                     </div>
+                    <div><a href="{{ route('user_dashboard.blog.index') }}"><button
+                                class="btn btn-primary btn-sm">Back</button></a></div>
                 </div>
             </div>
+            <div class="card-body">
+
+                <form action="{{ route('user_dashboard.user.store') }}" method="POST">
+
+                    @if ($errors->any())
+                        @foreach ($errors->all() as $error)
+                            <script>
+                                document.addEventListener('DOMContentLoaded', function() {
+                                    toastr.options.closeButton = true;
+                                    toastr.error('{{ $error }}');
+                                });
+                            </script>
+                        @endforeach
+                    @endif
+                    @if (session()->has('errorMessage'))
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                toastr.options.closeButton = true;
+                                toastr.error('{{ session('errorMessage') }}');
+                            });
+                        </script>
+                    @endif
+
+                    @csrf
+                    @method('POST')
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label for="name">Blog Title</label>
+                            <input class="summernote" type="text" name="name" class="form-control" class="name"
+                                value="{{ old('name') }}">
+
+                            <label class="mt-3" for="email">Blog Category</label>
+                            <input class="summernote" type="email" name="email" class="form-control" id="email"
+                                value="{{ old('email') }}">
+
+                            <label class="mt-3" for="password">Blog Description</label>
+                            <div id="summernote"></div>
+
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Add</button>
+                </form>
+
+            </div>
         </div>
-        <!-- /Content Row -->
     </div>
 @endsection
