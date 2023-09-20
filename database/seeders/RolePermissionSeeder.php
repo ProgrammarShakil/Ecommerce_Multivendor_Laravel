@@ -31,31 +31,31 @@ class RolePermissionSeeder extends Seeder
             [
                 'group_name' => 'blog',
                 'permissions' => [
-                    'user_dashboard.blog.create',
-                    'user_dashboard.blog.index',
-                    'user_dashboard.blog.edit',
-                    'user_dashboard.blog.update',
-                    'user_dashboard.blog.delete'
+                    'user_dashboard.pages.blog.create',
+                    'user_dashboard.pages.blog.index',
+                    'user_dashboard.pages.blog.edit',
+                    'user_dashboard.pages.blog.update',
+                    'user_dashboard.pages.blog.delete'
                 ]
             ],
             [
                 'group_name' => 'profile',
                 'permissions' => [
-                    'user_dashboard.profile.create',
-                    'user_dashboard.profile.index',
-                    'user_dashboard.profile.edit',
-                    'user_dashboard.profile.update',
-                    'user_dashboard.profile.delete'
+                    'user_dashboard.pages.profile.create',
+                    'user_dashboard.pages.profile.index',
+                    'user_dashboard.pages.profile.edit',
+                    'user_dashboard.pages.profile.update',
+                    'user_dashboard.pages.profile.delete'
                 ]
             ],
             [
-                'group_name' => 'settings',
+                'group_name' => 'user',
                 'permissions' => [
-                    'user_dashboard.settings.create',
-                    'user_dashboard.settings.index',
-                    'user_dashboard.settings.edit',
-                    'user_dashboard.settings.update',
-                    'user_dashboard.settings.delete'
+                    'user_dashboard.pages.user.create',
+                    'user_dashboard.pages.user.index',
+                    'user_dashboard.pages.user.edit',
+                    'user_dashboard.pages.user.update',
+                    'user_dashboard.pages.user.delete'
                 ]
             ],
 

@@ -26,6 +26,9 @@ class BlogController extends Controller
     }
 
     public function create(){
+        if(is_null($this->user) || !$this->user->can('user_dashboard.pages.blog.create')){
+            abort(403, 'Unauthorized');
+        }
         return view('user_dashboard.pages.blog.create');
     }
 
@@ -34,14 +37,23 @@ class BlogController extends Controller
     }
 
     public function edit(){
+        if(is_null($this->user) || !$this->user->can('user_dashboard.pages.blog.edit')){
+            abort(403, 'Unauthorized');
+        }
         return view('user_dashboard.pages.blog.edit');
     }
 
     public function update(){
+        if(is_null($this->user) || !$this->user->can('user_dashboard.pages.blog.update')){
+            abort(403, 'Unauthorized');
+        }
         return "Update Function Fired";
     }
 
     public function delete(){
+        if(is_null($this->user) || !$this->user->can('user_dashboard.pages.blog.delete')){
+            abort(403, 'Unauthorized');
+        }
         return "Delete Function Fired";
     }
 }
