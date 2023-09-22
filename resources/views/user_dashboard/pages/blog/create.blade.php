@@ -49,7 +49,7 @@
                                 value="{{ old('email') }}">
 
                             <label class="mt-3" for="password">Blog Description</label>
-                            <div id="summernote"></div>
+                            <textarea class="summernote" name="" id="" cols="30" rows="10"></textarea>
 
                         </div>
                     </div>
